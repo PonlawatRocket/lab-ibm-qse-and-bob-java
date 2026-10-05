@@ -13,9 +13,10 @@ setlocal EnableDelayedExpansion
 @REM Always run from the directory that contains this script
 cd /d "%~dp0"
 
-set "MAVEN_PROJECTBASEDIR=%~dp0"
-set "WRAPPER_JAR=%MAVEN_PROJECTBASEDIR%.mvn\wrapper\maven-wrapper.jar"
-set "WRAPPER_PROPERTIES=%MAVEN_PROJECTBASEDIR%.mvn\wrapper\maven-wrapper.properties"
+@REM Use "." as the project base so spaces in the path do not break -D arguments
+set "MAVEN_PROJECTBASEDIR=."
+set "WRAPPER_JAR=.mvn\wrapper\maven-wrapper.jar"
+set "WRAPPER_PROPERTIES=.mvn\wrapper\maven-wrapper.properties"
 
 @REM Locate java executable
 if defined JAVA_HOME (
