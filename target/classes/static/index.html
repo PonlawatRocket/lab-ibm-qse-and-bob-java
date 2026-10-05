@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>NovaPay</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     LOGIN SCREEN
+══════════════════════════════════════════════════════════ -->
+<div id="screen-login" class="screen active">
+  <div class="login-wrap">
+    <div class="login-logo">
+      <div class="logo-mark">N</div>
+      <span class="logo-name">NovaPay</span>
+    </div>
+    <p class="login-tagline">Your money, your way.</p>
+
+    <div class="login-card">
+      <h2 class="login-title">Sign in</h2>
+
+      <div id="login-error" class="login-error hidden"></div>
+
+      <div class="field-group">
+        <label class="field-label">Username</label>
+        <input id="inp-user" class="field-input" type="text" placeholder="e.g. alice" autocomplete="username" />
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Password</label>
+        <input id="inp-pass" class="field-input" type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+
+      <button class="btn-primary btn-full" id="btn-login">Sign in</button>
+
+      <div class="login-divider"><span>or</span></div>
+
+      <button class="btn-biometric btn-full" id="btn-biometric">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2a5 5 0 0 1 5 5v4a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5z"/>
+          <path d="M7 11v1a5 5 0 0 0 10 0v-1"/>
+          <path d="M4 16s.5 4 8 4 8-4 8-4"/>
+        </svg>
+        <span>Sign in with Face ID</span>
+      </button>
+
+      <p class="login-hint">Demo: alice / pass123 &nbsp;·&nbsp; bob / pass456</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MAIN APP SHELL (visible after login)
+══════════════════════════════════════════════════════════ -->
+<div id="app-shell" class="hidden">
+
+  <!-- TOP NAV BAR -->
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <button class="top-btn" id="btn-back" style="display:none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <span class="top-bar-title" id="top-bar-title">NovaPay</span>
+    </div>
+    <div class="top-bar-right">
+      <button class="top-btn notif-btn" id="btn-notif">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="notif-dot"></span>
+      </button>
+      <button class="avatar-btn" id="btn-avatar">
+        <span id="avatar-initials">AL</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PAGE CONTAINER -->
+  <main class="page-container">
+
+    <!-- ── HOME DASHBOARD ───────────────────────────────────── -->
+    <div id="screen-home" class="page active">
+
+      <!-- GREETING CARD -->
+      <div class="greeting-card">
+        <div class="greeting-text">
+          <p class="greeting-hi">Good morning,</p>
+          <h1 class="greeting-name" id="greet-name">Alice</h1>
+        </div>
+        <div class="greeting-avatar" id="greet-avatar">A</div>
+      </div>
+
+      <!-- BALANCE CARD -->
+      <div class="balance-card">
+        <div class="balance-label">Available Balance</div>
+        <div class="balance-amount" id="balance-main">$12,340.50</div>
+        <div class="balance-acct" id="balance-acct">NP-0001-2024 · Current</div>
+        <div class="balance-actions">
+          <button class="balance-action" onclick="App.goTransfer()">
+            <div class="ba-icon">↑</div>
+            <span>Transfer</span>
+          </button>
+          <button class="balance-action" onclick="App.showToast('Pay Bill – coming soon')">
+            <div class="ba-icon">⚡</div>
+            <span>Pay Bill</span>
+          </button>
+          <button class="balance-action" onclick="App.showToast('Top Up – coming soon')">
+            <div class="ba-icon">+</div>
+            <span>Top Up</span>
+          </button>
+          <button class="balance-action" onclick="App.goPage('screen-profile')">
+            <div class="ba-icon">☰</div>
+            <span>More</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ACCOUNTS ROW -->
+      <div class="section-header">
+        <span class="section-title">Accounts</span>
+        <span class="section-link" onclick="App.goPage('screen-cards')">See all</span>
+      </div>
+      <div class="accounts-row">
+        <div class="account-chip active-chip">
+          <div class="chip-label">Current</div>
+          <div class="chip-amount" id="chip-current">$12,340.50</div>
+        </div>
+        <div class="account-chip">
+          <div class="chip-label">Savings</div>
+          <div class="chip-amount" id="chip-savings">$48,750.00</div>
+        </div>
+        <div class="account-chip card-chip">
+          <div class="chip-label">Credit Card</div>
+          <div class="chip-amount">···· 4782</div>
+        </div>
+      </div>
+
+      <!-- RECENT TRANSACTIONS -->
+      <div class="section-header">
+        <span class="section-title">Recent Activity</span>
+        <span class="section-link" onclick="App.showToast('Full history – coming soon')">See all</span>
+      </div>
+      <div id="txn-list" class="txn-list">
+        <!-- populated by JS -->
+      </div>
+
+    </div><!-- /screen-home -->
+
+    <!-- ── TRANSFER PAGE ─────────────────────────────────────── -->
+    <div id="screen-transfer" class="page">
+      <div class="form-screen">
+        <h2 class="page-title">Send Money</h2>
+        <p class="page-sub">Secure transfer between accounts</p>
+
+        <div class="field-group mt20">
+          <label class="field-label">From Account</label>
+          <select class="field-input" id="tf-from">
+            <option value="NP-0001-2024">NP-0001-2024 · Current ($12,340.50)</option>
+            <option value="NP-SAV-2024">NP-SAV-2024 · Savings ($48,750.00)</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Recipient Account</label>
+          <input class="field-input" id="tf-to" type="text" placeholder="Account number or email" value="NP-0002-2024" />
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Amount</label>
+          <div class="amount-input-wrap">
+            <span class="currency-prefix">$</span>
+            <input class="field-input amount-input" id="tf-amount" type="number" placeholder="0.00" min="0.01" step="0.01" value="250.00" />
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Note <span class="optional">(optional)</span></label>
+          <input class="field-input" id="tf-note" type="text" placeholder="e.g. Rent payment" />
+        </div>
+
+        <!-- Quick amount chips -->
+        <div class="quick-amounts">
+          <button class="qa-chip" onclick="App.setAmount(50)">$50</button>
+          <button class="qa-chip" onclick="App.setAmount(100)">$100</button>
+          <button class="qa-chip" onclick="App.setAmount(250)">$250</button>
+          <button class="qa-chip" onclick="App.setAmount(500)">$500</button>
+        </div>
+
+        <button class="btn-primary btn-full mt24" id="btn-transfer">
+          <span id="btn-transfer-label">Review Transfer</span>
+        </button>
+      </div>
+    </div><!-- /screen-transfer -->
+
+    <!-- ── TRANSFER SUCCESS PAGE ─────────────────────────────── -->
+    <div id="screen-success" class="page">
+      <div class="success-screen">
+        <div class="success-icon">✓</div>
+        <h2 class="success-title">Transfer Successful</h2>
+        <p class="success-sub">Your funds have been sent securely.</p>
+
+        <div class="success-card">
+          <div class="success-row">
+            <span class="sr-label">Reference</span>
+            <span class="sr-value mono" id="suc-ref">—</span>
+          </div>
+          <div class="success-row">
+            <span class="sr-label">To</span>
+            <span class="sr-value" id="suc-to">—</span>
+          </div>
+          <div class="success-row">
+            <span class="sr-label">Amount</span>
+            <span class="sr-value green" id="suc-amount">—</span>
+          </div>
+          <div class="success-row">
+            <span class="sr-label">Date &amp; Time</span>
+            <span class="sr-value" id="suc-time">—</span>
+          </div>
+          <div class="success-row">
+            <span class="sr-label">Status</span>
+            <span class="sr-value green">Completed</span>
+          </div>
+        </div>
+
+        <button class="btn-primary btn-full mt16" id="btn-view-slip">View E-Slip</button>
+        <button class="btn-ghost btn-full mt8" onclick="App.goHome()">Back to Home</button>
+      </div>
+    </div><!-- /screen-success -->
+
+    <!-- ── E-SLIP PAGE ────────────────────────────────────────── -->
+    <div id="screen-slip" class="page">
+      <div class="slip-screen">
+        <div class="slip-header">
+          <div class="slip-bank-logo">N</div>
+          <div class="slip-bank-name">NovaPay Bank</div>
+          <div class="slip-title">Transfer Receipt</div>
+        </div>
+
+        <div class="slip-body">
+          <div class="slip-row">
+            <span class="slip-label">Reference No.</span>
+            <span class="slip-value mono" id="slip-ref">—</span>
+          </div>
+          <div class="slip-row">
+            <span class="slip-label">Date &amp; Time</span>
+            <span class="slip-value" id="slip-time">—</span>
+          </div>
+          <div class="slip-divider"></div>
+          <div class="slip-row">
+            <span class="slip-label">Sender Account</span>
+            <span class="slip-value" id="slip-from">—</span>
+          </div>
+          <div class="slip-row">
+            <span class="slip-label">Recipient Account</span>
+            <span class="slip-value" id="slip-to">—</span>
+          </div>
+          <div class="slip-divider"></div>
+          <div class="slip-row">
+            <span class="slip-label">Amount</span>
+            <span class="slip-value slip-amount" id="slip-amount">—</span>
+          </div>
+          <div class="slip-row">
+            <span class="slip-label">Fee</span>
+            <span class="slip-value">$0.00</span>
+          </div>
+          <div class="slip-row slip-total">
+            <span class="slip-label">Total Deducted</span>
+            <span class="slip-value slip-amount" id="slip-total">—</span>
+          </div>
+          <div class="slip-divider"></div>
+          <div class="slip-row">
+            <span class="slip-label">Note</span>
+            <span class="slip-value" id="slip-note">—</span>
+          </div>
+          <div class="slip-row">
+            <span class="slip-label">Issued by</span>
+            <span class="slip-value" id="slip-bank">NovaPay Bank N.A.</span>
+          </div>
+          <div class="slip-row">
+            <span class="slip-label">Verification</span>
+            <span class="slip-value green">✓ Digitally Signed</span>
+          </div>
+        </div>
+
+        <div class="slip-footer">
+          <button class="btn-ghost btn-sm" onclick="App.showToast('Download saved')">⬇ Download</button>
+          <button class="btn-ghost btn-sm" onclick="App.showToast('Shared via link')">↗ Share</button>
+        </div>
+      </div>
+    </div><!-- /screen-slip -->
+
+    <!-- ── CARDS / ACCOUNTS OVERVIEW ────────────────────────── -->
+    <div id="screen-cards" class="page">
+      <h2 class="page-title">My Accounts</h2>
+
+      <div class="card-list">
+
+        <div class="bank-card card-blue">
+          <div class="card-type">Current Account</div>
+          <div class="card-number">···· ···· ···· 2024</div>
+          <div class="card-bottom">
+            <div>
+              <div class="card-label">Account</div>
+              <div class="card-acct" id="cards-acct-1">NP-0001-2024</div>
+            </div>
+            <div>
+              <div class="card-label">Balance</div>
+              <div class="card-bal" id="cards-bal-1">$12,340.50</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bank-card card-dark">
+          <div class="card-type">Savings Account</div>
+          <div class="card-number">···· ···· ···· S024</div>
+          <div class="card-bottom">
+            <div>
+              <div class="card-label">Account</div>
+              <div class="card-acct">NP-SAV-2024</div>
+            </div>
+            <div>
+              <div class="card-label">Balance</div>
+              <div class="card-bal" id="cards-bal-2">$48,750.00</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bank-card card-gold">
+          <div class="card-type">Credit Card</div>
+          <div class="card-number">···· ···· ···· <span id="cards-card-last4">4782</span></div>
+          <div class="card-bottom">
+            <div>
+              <div class="card-label">Card holder</div>
+              <div class="card-acct" id="cards-holder">Alice Sutton</div>
+            </div>
+            <div>
+              <div class="card-label">Expires</div>
+              <div class="card-bal">12 / 27</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="section-header mt20">
+        <span class="section-title">Add Account</span>
+      </div>
+      <button class="btn-ghost btn-full" onclick="App.showToast('Account linking – coming soon')">+ Link new account</button>
+    </div><!-- /screen-cards -->
+
+    <!-- ── PROFILE / SECURITY ────────────────────────────────── -->
+    <div id="screen-profile" class="page">
+      <div class="profile-header">
+        <div class="profile-avatar" id="prof-avatar">A</div>
+        <div>
+          <div class="profile-name" id="prof-name">Alice Sutton</div>
+          <div class="profile-tier" id="prof-tier">Gold Member</div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-row">
+          <span class="info-label">Full Name</span>
+          <span class="info-value" id="prof-full-name">Alice Sutton</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Email</span>
+          <span class="info-value" id="prof-email">alice.sutton@example.com</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Phone</span>
+          <span class="info-value" id="prof-phone">+1 (555) 012-3456</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Account No.</span>
+          <span class="info-value" id="prof-acct">NP-0001-2024</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Last Login</span>
+          <span class="info-value" id="prof-last-login">—</span>
+        </div>
+      </div>
+
+      <div class="section-header mt20">
+        <span class="section-title">Security</span>
+      </div>
+      <div class="info-card">
+        <div class="info-row">
+          <span class="info-label">Registered Device</span>
+          <span class="info-value green" id="prof-device">iPhone 15 Pro</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Face ID</span>
+          <span class="info-value green">Enabled</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Two-Factor Auth</span>
+          <span class="info-value green">Active</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Security Score</span>
+          <span class="info-value">
+            <span class="score-badge">84 / 100</span>
+          </span>
+        </div>
+      </div>
+
+      <button class="btn-ghost btn-full mt16" onclick="App.goPage('screen-devices')">Manage Devices</button>
+      <button class="btn-danger btn-full mt8" id="btn-logout">Sign Out</button>
+    </div><!-- /screen-profile -->
+
+    <!-- ── DEVICES ─────────────────────────────────────────────── -->
+    <div id="screen-devices" class="page">
+      <h2 class="page-title">Registered Devices</h2>
+      <p class="page-sub">Devices allowed to access your account.</p>
+
+      <div id="device-list" class="device-list">
+        <!-- populated by JS -->
+      </div>
+
+      <button class="btn-primary btn-full mt20" id="btn-register-device">
+        + Register This Device
+      </button>
+    </div><!-- /screen-devices -->
+
+    <!-- ── NOTIFICATIONS ─────────────────────────────────────── -->
+    <div id="screen-notif" class="page">
+      <h2 class="page-title">Notifications</h2>
+      <div id="notif-list" class="notif-list">
+        <!-- populated by JS -->
+      </div>
+    </div><!-- /screen-notif -->
+
+  </main><!-- /page-container -->
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="nav-item active" data-target="screen-home" id="nav-home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Home</span>
+    </button>
+    <button class="nav-item" data-target="screen-cards" id="nav-cards">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <span>Accounts</span>
+    </button>
+    <button class="nav-item nav-transfer" onclick="App.goTransfer()">
+      <div class="nav-fab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 5 5 12"/></svg>
+      </div>
+      <span>Transfer</span>
+    </button>
+    <button class="nav-item" data-target="screen-notif" id="nav-notif">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <span>Alerts</span>
+    </button>
+    <button class="nav-item" data-target="screen-profile" id="nav-profile">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+</div><!-- /app-shell -->
+
+<!-- TOAST NOTIFICATION -->
+<div id="toast" class="toast hidden"></div>
+
+<!-- Subtle workshop footer (operator-only context) -->
+<div class="workshop-badge">
+  Internal workshop demo · Educational use only
+</div>
+
+<script src="app.js?v=2"></script>
+</body>
+</html>
