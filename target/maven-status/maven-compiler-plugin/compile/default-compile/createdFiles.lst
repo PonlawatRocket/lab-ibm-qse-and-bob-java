@@ -1,0 +1,10 @@
+demo\DemoApplication.class
+demo\DemoController.class
+demo\TransferService.class
+demo\AuditService.class
+demo\PartnerService.class
+demo\DeviceService.class
+demo\ProfileService.class
+demo\SlipService.class
+demo\BankController.class
+demo\AuthService.class
