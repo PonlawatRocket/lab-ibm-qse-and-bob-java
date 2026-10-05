@@ -1,9 +1,9 @@
 @echo off
 echo.
-echo  _______________________________________________
+echo  ___________________________________________________
 echo
-echo      NovaPay Mobile Banking QSE Demo Runner
-echo  _______________________________________________
+echo      CU Pay Lite Mobile Banking QSE Demo Runner
+echo  ___________________________________________________
 echo.
 echo  No Maven installation required.
 echo  Java 17+ must be available on PATH or JAVA_HOME must be set.
