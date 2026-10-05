@@ -68,6 +68,16 @@ public class ProfileService {
     }
 
     /**
+     * Deduct amount from the sender's currentBalance in-memory.
+     */
+    public void deductBalance(String userId, double amount) {
+        Map<String, Object> profile = PROFILES.get(userId);
+        if (profile == null) return;
+        double current = ((Number) profile.get("currentBalance")).doubleValue();
+        profile.put("currentBalance", current - amount);
+    }
+
+    /**
      * Return profile for a user, including a freshly computed checksum.
      */
     public Map<String, Object> getProfile(String userId) {

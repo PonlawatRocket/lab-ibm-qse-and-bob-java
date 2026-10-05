@@ -88,6 +88,9 @@ public class BankController {
         String userId = body.getOrDefault("userId",     "alice");
 
         Map<String, Object> result = transferService.executeTransfer(from, to, amount, note);
+        if ("SUCCESS".equals(result.get("status"))) {
+            profileService.deductBalance(userId, Double.parseDouble(amount));
+        }
         auditService.logEvent(userId, "TRANSFER", "Amount: " + amount + " → " + to);
         return result;
     }

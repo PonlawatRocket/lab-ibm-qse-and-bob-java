@@ -273,6 +273,7 @@ const App = {
       document.getElementById('suc-time').textContent   = data.timestamp;
 
       App.goPage('screen-success');
+      App.loadDashboard();
     } catch (e) {
       App.showToast('Transfer failed. Please try again.');
     } finally {
