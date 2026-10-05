@@ -136,7 +136,7 @@ const App = {
 
     // Top bar
     const titles = {
-      'screen-home':     'NovaPay',
+      'screen-home':     'CU Pay Lite',
       'screen-transfer': 'Send Money',
       'screen-success':  'Transfer Sent',
       'screen-slip':     'E-Slip',
@@ -145,7 +145,7 @@ const App = {
       'screen-devices':  'Devices',
       'screen-notif':    'Notifications',
     };
-    document.getElementById('top-bar-title').textContent = titles[targetId] || 'NovaPay';
+    document.getElementById('top-bar-title').textContent = titles[targetId] || 'CU Pay Lite';
 
     // Back button
     const showBack = !['screen-home', 'screen-cards', 'screen-notif', 'screen-profile'].includes(targetId);
@@ -305,7 +305,7 @@ const App = {
       document.getElementById('slip-amount').textContent = '$' + parseFloat(slip.amount).toFixed(2);
       document.getElementById('slip-total').textContent  = '$' + parseFloat(slip.amount).toFixed(2);
       document.getElementById('slip-note').textContent   = slip.note || '—';
-      document.getElementById('slip-bank').textContent   = slip.bankStamp || 'NovaPay Bank N.A.';
+      document.getElementById('slip-bank').textContent   = slip.bankStamp || 'CU Pay Lite';
 
       App.goPage('screen-slip');
     } catch (e) {

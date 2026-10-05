@@ -25,3 +25,6 @@ replay_pid*
 
 # Maven build status (generated — do not commit)
 target/maven-status/
+
+# Custom file
+REF.md
