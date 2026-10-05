@@ -1,8 +1,9 @@
 @echo off
 echo.
-echo  ╔══════════════════════════════════════════════╗
-echo  ║  NovaPay Mobile Banking – QSE Demo Runner   ║
-echo  ╚══════════════════════════════════════════════╝
+echo  _______________________________________________
+echo
+echo      NovaPay Mobile Banking QSE Demo Runner
+echo  _______________________________________________
 echo.
 echo  No Maven installation required.
 echo  Java 17+ must be available on PATH or JAVA_HOME must be set.
