@@ -241,6 +241,13 @@ IBM Quantum Safe Explorer (QSE) scans your source code and detects cryptographic
 
 > **Note:** Keep note of the installation path — you will need it when configuring the QSE IDE extension in the next step.
 
+### Start QSE Engine 
+
+1. After installation, QSE icon will be default on Desktop.
+2. Start the engine by clicking icon. If it is successful, service will be running as a result below.
+
+<img src="images/qse-engine-running.png" alt="QSE Engine setup folder" width="400"/> 
+
 ---
 
 ## 7. QSE IDE Extension
@@ -280,7 +287,31 @@ After installation, you will see the **Quantum Safe Explorer** icon in the Activ
 <!-- Image placeholder: QSE icon in Activity Bar -->
 <img src="images/vscode-qse-activity-bar.png" alt="QSE icon in Activity Bar" width="1000"/>
 
-> **Configure the engine path:** After installation, open the QSE extension settings and set the engine path to the directory where you extracted the QSE engine in the previous step.
+### Configure the extension
+1. Search IBM Quantum Safe Explorer in the Extensions panel.
+2. Click gear icon, and go to Settings.
+
+<img src="images/qse-setting-1.png" alt="QSE icon in Activity Bar" width="1000"/>
+
+3. Under Qs-explorer: Source File Extensions banner, click Edit in settings.json
+
+<img src="images/qse-setting-2.png" alt="QSE icon in Activity Bar" width="1000"/>
+
+4. Review configuration. Place configuration text below in settings.json file If it don't look like a given configuration.
+```
+{
+"qs-explorer.sourceFileExtensions": [
+      ".java",
+      ".py",
+      ".cs",
+      ".go"
+   ],
+"redhat.telemetry.enabled": false,
+"java.autobuild.enabled": false,
+"diffEditor.ignoreTrimWhitespace": false
+}
+```
+
 
 ---
 
