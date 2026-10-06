@@ -153,14 +153,16 @@ In this step you will point QSE at the app's Java source code and review the fin
 #### Run the scan
 
 1. Open **VS Code or Bob IDE**.
-2. Click the search box at the top of the window (or press Ctrl + Shift + P), then type >Quantum Safe Explorer: Scan and press Enter.
-3. In the QSE panel, set the **scan target** to the Java source directory:
 
+2. Click the search box at the top of the window (or press Ctrl + Shift + P), then type ```>Quantum Safe Explorer: Scan``` and press Enter.
 
-4. Click **Start Scan** and wait for the scan to complete.
+<img src="images/qse-scan-path.png" alt="qse scan path" width="1000"/> 
 
-<!-- Image placeholder: QSE panel with scan target set -->
-<img src="images/qse-scan-target.png" alt="QSE scan target configuration" width="700"/>
+3. A prompt appears asking for the class path. In the Explorer, right-click the **target\classes** folder, **Copy Path**, then paste it into **Enter class path**, and press Enter.
+
+<img src="images/qse-scan-path-copy.png" alt="qse scan path" width="1000"/> 
+
+4. Open the bottom panel (Ctrl + `) and select the **EXPLORER SCAN RESULTS** tab. Look through what Quantum Safe Explorer found — cryptographic assets, algorithms, key sizes, and vulnerabilities.
 
 #### Review the results
 
