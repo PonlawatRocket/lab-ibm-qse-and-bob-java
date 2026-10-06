@@ -11,6 +11,20 @@ Welcome to the hands-on lab! In this workshop you will use **IBM Quantum Safe Ex
 
 ---
 
+## Optional — Application Details
+
+> **You can skip this section and go straight to the lab steps.**
+> This section is for attendees who want to understand how cryptography and encryption are used inside a real-world banking application before they start.
+
+[`SEQUENCE_DIAGRAME.md`](SEQUENCE_DIAGRAME.md) contains:
+- **Feature logic** — how each banking feature (login, transfer, e-slip, device registration, etc.) works end-to-end
+- **Sequence diagrams** — step-by-step flow diagrams for each feature
+- **Encryption locations** — exactly where and how cryptographic operations are called within each flow
+
+This is useful if you want to see how encryption fits into real application code before using QSE to find the weak spots.
+
+---
+
 ## Overview
 
 ### About This Lab
