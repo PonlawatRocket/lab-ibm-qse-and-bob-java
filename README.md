@@ -169,15 +169,12 @@ In this step you will point QSE at the app's Java source code and review the fin
 QSE will display findings in two places:
 
 - **Dashboard** — a visual summary of all cryptographic vulnerabilities found
-- **`result.json`** — a detailed machine-readable report saved in the project folder (`qs_scan_result/`)
+- **`qs_explorer_result/`** and **`qs_scan_result/`** — a detailed machine-readable report saved in the project folder
 
 <!-- Image placeholder: QSE dashboard showing findings -->
-<img src="images/qse-dashboard.png" alt="QSE findings dashboard" width="700"/>
+<img src="images/qse-scan-result-before.png" alt="QSE findings dashboard" width="1000"/> 
 
-<!-- Image placeholder: result.json file content -->
-<img src="images/qse-result-json.png" alt="QSE result.json" width="700"/>
-
-Expected findings: approximately **20–25 cryptographic vulnerabilities** across 7 service classes, including weak RSA key sizes (1024-bit), weak DH key sizes (1024-bit), SHA1withRSA signatures, HmacSHA1 MACs, and SHA-1 digests.
+Expected findings: approximately **80–100 cryptographic vulnerabilities** across service classes, including weak RSA key sizes (1024-bit), weak DH key sizes (1024-bit), SHA1withRSA signatures, HmacSHA1 MACs, and SHA-1 digests.
 
 ---
 
@@ -189,7 +186,7 @@ Bob works through a series of prompts in different modes. Follow each prompt in 
 
 #### 2.1 — Initialize Bob (Agent Mode)
 
-Switch Bob to **Agent** mode, then run:
+Switch Bob to **`Agent mode`** , then run:
 
 ```
 /init
@@ -197,14 +194,12 @@ Switch Bob to **Agent** mode, then run:
 
 This tells Bob to read and index the project so it understands the codebase before you ask it to do anything.
 
-<!-- Image placeholder: Bob /init in Agent mode -->
-<img src="images/bob-init.png" alt="Bob /init command in Agent mode" width="700"/>
 
 ---
 
 #### 2.2 — Understand the Findings (Plan Mode)
 
-Switch Bob to **Plan** mode, then send this prompt:
+Switch Bob to **`Plan mode`** , then send this prompt:
 
 ```
 Please review the IBM QSE scan result for this app and explain the findings to me in simple terms.
@@ -219,14 +214,11 @@ Don't change any code yet.
 
 Bob will explain each finding in plain language — what the weak algorithm is, where it appears in the banking app, and why it matters. Read through Bob's response before moving to the next step.
 
-<!-- Image placeholder: Bob explaining QSE findings in Plan mode -->
-<img src="images/bob-plan-explain.png" alt="Bob explaining findings in Plan mode" width="700"/>
-
 ---
 
 #### 2.3 — Fix the Weak Crypto (Agent Mode)
 
-Switch Bob to **Agent** mode, then send this prompt:
+Switch Bob to **`Agent mode`** , then send this prompt:
 
 ```
 Please help fix the weak crypto in this app.
@@ -238,14 +230,11 @@ Only change the source code. Don't build or run the app.
 
 Bob will make targeted changes across the 7 service classes — upgrading algorithm strings and key sizes while keeping every method name, API call pattern, and business logic intact.
 
-<!-- Image placeholder: Bob applying fixes in Agent mode -->
-<img src="images/bob-agent-fix.png" alt="Bob applying crypto fixes in Agent mode" width="700"/>
-
 ---
 
 #### 2.4 — Review What Changed (Ask Mode)
 
-Switch Bob to **Ask** mode, then send this prompt:
+Switch Bob to **`Ask mode`** , then send this prompt:
 
 ```
 Please explain what you changed.
@@ -256,8 +245,6 @@ Don't edit the code again.
 
 Bob will produce a summary table of every change it made — old value, new value, and the reason. Use this to verify the remediation looks correct before re-scanning.
 
-<!-- Image placeholder: Bob summarizing changes in Ask mode -->
-<img src="images/bob-ask-summary.png" alt="Bob change summary in Ask mode" width="700"/>
 
 ---
 
@@ -270,16 +257,15 @@ Run the QSE scan again using the same steps as STEP 1 to confirm the findings ha
 3. Click **Start Scan**.
 
 <!-- Image placeholder: QSE dashboard after remediation showing reduced findings -->
-<img src="images/qse-rescan-dashboard.png" alt="QSE dashboard after Bob remediation" width="700"/>
+<img src="images/qse-scan-result-after.png" alt="QSE dashboard after Bob remediation" width="1000"/>
 
-Expected result: findings drop from **~20–25 down to ~4–7** (remaining findings are acceptable or informational).
+Expected result: findings drop from **~80–100 down to ~60–70** (remaining findings are acceptable or informational).
 
 | Metric | Before Bob | After Bob |
 |---|---:|---:|
-| QSE Findings | ~20–25 | ~4–7 |
-| Crypto Assets | 16 | 16 |
-| Classes changed | 0 | 7 |
-| Lines changed | 0 | ~16 |
+| QSE Findings | ~80–100 | ~60–70 |
+| Crypto Assets | 24 | 24 |
+| Algorithms | 24 | 24 |
 
 ---
 
@@ -304,9 +290,6 @@ run.cmd
 
 Open `http://localhost:8080`, log in, and repeat the walkthrough steps from earlier. All features — login, transfers, e-slips, devices — should work exactly as before.
 
-<!-- Image placeholder: App running successfully after remediation -->
-<img src="images/app-post-remediation.png" alt="App running after Bob remediation" width="700"/>
-
 ---
 
 ## Key Takeaways
@@ -319,6 +302,7 @@ Open `http://localhost:8080`, log in, and repeat the walkthrough steps from earl
 ---
 
 ## Important Notes & Disclaimer
+
 
 - **For educational use only.** CU Pay Lite is a workshop demo application. It must not be used in production or deployed to any public environment.
 - **Intentionally weak cryptography.** The application contains deliberately insecure algorithms to demonstrate QSE's detection capabilities. This is by design.
