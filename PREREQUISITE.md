@@ -37,10 +37,11 @@ IBM Bob is an AI software engineering assistant. In this workshop, Bob is used t
 ### Installation
 
 Follow the official IBM Bob installation guide:  
-👉 [Install IBM Bob](https://www.ibm.com/docs/en/bob)
+👉 [Download IBM Bob](https://bob.ibm.com/download)\
+👉 [Installation Guide](https://bob.ibm.com/docs/ide/getting-started/install)
 
 <!-- Image placeholder: IBM Bob installation page screenshot -->
-<img src="images/ibm-bob-install-page.png" alt="IBM Bob installation page" width="700"/>
+<img src="images/ibm-bob-install-page.png" alt="IBM Bob installation page" width="1000"/>
 
 ---
 
@@ -51,20 +52,20 @@ An IBM Bob account is required to activate and use Bob in this workshop.
 ### Free trial
 
 Sign up for a **free IBM Bob account** here:  
-👉 [Start your free IBM Bob trial](https://www.ibm.com/products/bob)
+👉 [Start your free IBM Bob trial](https://bob.ibm.com/trial)
 
 <!-- Image placeholder: IBM Bob free trial sign-up page -->
-<img src="images/ibm-bob-trial-signup.png" alt="IBM Bob free trial sign-up page" width="700"/>
+<img src="images/ibm-bob-trial-signup.png" alt="IBM Bob free trial sign-up page" width="1000"/>
 
 ### Sign in to Bob
 
-1. Open **VS Code or Bob IDE**.
+1. Open **Bob IDE**.
 2. Click the **Bob** icon in the Activity Bar.
 3. Click **"Sign In"** and follow the authentication flow in your browser.
 4. Once signed in, Bob will be active and ready to use.
 
-<!-- Image placeholder: Bob sign-in screen in VS Code or Bob IDE -->
-<img src="images/ibm-bob-vscode-signin.png" alt="Bob sign-in in VS Code or Bob IDE" width="600"/>
+<!-- Image placeholder: Bob sign-in screen in Bob IDE -->
+<img src="images/ibm-bob-vscode-signin.png" alt="Bob sign-in in VS Code or Bob IDE" width="1000"/>
 
 ---
 
@@ -185,7 +186,10 @@ javac -version
 ```
 
 <!-- Image placeholder: Windows Environment Variables dialog -->
-<img src="images/java-env-windows.png" alt="Setting JAVA_HOME on Windows" width="700"/>
+<img src="images/java-env-windows.png" alt="Setting JAVA_HOME on Windows" width="700"/>\
+_Credit: https://www.codejava.net/java-core/how-to-set-java-home-environment-variable-on-windows-10_
+
+Or you can follow the step here: 👉 [JAVA_HOME Set Up](https://www.codejava.net/java-core/how-to-set-java-home-environment-variable-on-windows-10)
 
 ---
 
@@ -262,14 +266,19 @@ This file is provided by your workshop facilitator. Make sure you have it saved 
 5. Browse to the `.vsix` file and click **Install**.
 
 <!-- Image placeholder: VS Code or Bob IDE "Install from VSIX" menu -->
-<img src="images/vscode-install-vsix.png" alt="Install from VSIX menu in VS Code or Bob IDE" width="700"/>
+<img src="images/vscode-install-vsix.png" alt="Install from VSIX menu in VS Code or Bob IDE" width="1000"/>
 
 6. Reload VS Code or Bob IDE when prompted.
 
+<!-- Image placeholder: QSE import success -->
+<img src="images/vscode-qse-import-success.png" alt="QSE icon in Activity Bar" width="700"/>
+
 After installation, you will see the **Quantum Safe Explorer** icon in the Activity Bar.
 
+
+
 <!-- Image placeholder: QSE icon in Activity Bar -->
-<img src="images/vscode-qse-activity-bar.png" alt="QSE icon in Activity Bar" width="400"/>
+<img src="images/vscode-qse-activity-bar.png" alt="QSE icon in Activity Bar" width="1000"/>
 
 > **Configure the engine path:** After installation, open the QSE extension settings and set the engine path to the directory where you extracted the QSE engine in the previous step.
 
@@ -279,15 +288,15 @@ After installation, you will see the **Quantum Safe Explorer** icon in the Activ
 
 Use this checklist to confirm you are ready before the lab starts:
 
-| # | Prerequisite | Status |
-|---|---|:---:|
-| 1 | OS: Windows 11 or macOS Sonoma (Ventura / M1 or higher) + RAM 16 GB or more | ☐ |
-| 2 | IBM Bob installed (VS Code or Bob IDE) | ☐ |
-| 3 | IBM Bob account created and signed in | ☐ |
-| 4 | JDK 17 or higher installed (`java -version` shows 17+) | ☐ |
-| 5 | `JAVA_HOME` set and `java`/`javac` accessible from terminal | ☐ |
-| 6 | IBM Quantum Safe Explorer engine installed | ☐ |
-| 7 | QSE IDE extension (`quantum-safe-explorer-2.2.0.vsix`) installed in VS Code or Bob IDE | ☐ |
+| # | Prerequisite |
+|---|---|
+| 1 | OS: Windows 11 or macOS Sonoma (Ventura / M1 or higher) + RAM 16 GB or more |
+| 2 | IBM Bob installed (VS Code or Bob IDE) |
+| 3 | IBM Bob account created and signed in |
+| 4 | JDK 17 or higher installed (`java -version` shows 17+) |
+| 5 | `JAVA_HOME` set and `java`/`javac` accessible from terminal |
+| 6 | IBM Quantum Safe Explorer engine installed |
+| 7 | QSE IDE extension (`quantum-safe-explorer-2.2.0.vsix`) installed in VS Code or Bob IDE |
 
 Once all items are checked, you are ready to begin the lab. 🚀
 
