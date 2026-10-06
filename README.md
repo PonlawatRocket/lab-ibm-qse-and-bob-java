@@ -4,6 +4,13 @@ Welcome to the hands-on lab! In this workshop you will use **IBM Quantum Safe Ex
 
 ---
 
+## Pre-requisites
+
+> **Before starting this lab, please read [`PREREQUISITE.md`](PREREQUISITE.md) carefully.**
+> It covers all the software, tools, and environment setup required to complete the hands-on exercises.
+
+---
+
 ## Overview
 
 ### About This Lab
