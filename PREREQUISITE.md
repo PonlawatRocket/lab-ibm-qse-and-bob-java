@@ -28,48 +28,7 @@ Running IBM Bob, VS Code or Bob IDE, the QSE engine, and the Spring Boot demo ap
 
 ---
 
-## 2. IBM Bob
-
-IBM Bob is an AI software engineering assistant. In this workshop, Bob is used to remediate the cryptographic vulnerabilities found by QSE — upgrading weak algorithm strings and key sizes to quantum-safe standards.
-
-> **Tip:** Install IBM Bob before the QSE extension, as Bob ships with its own built-in IDE (Bob IDE) which can be used in place of VS Code.
-
-### Installation
-
-Follow the official IBM Bob installation guide:  
-👉 [Download IBM Bob](https://bob.ibm.com/download)\
-👉 [Installation Guide](https://bob.ibm.com/docs/ide/getting-started/install)
-
-<!-- Image placeholder: IBM Bob installation page screenshot -->
-<img src="images/ibm-bob-install-page.png" alt="IBM Bob installation page" width="1000"/>
-
----
-
-## 3. IBM Bob Account
-
-An IBM Bob account is required to activate and use Bob in this workshop.
-
-### Free trial
-
-Sign up for a **free IBM Bob account** here:  
-👉 [Start your free IBM Bob trial](https://bob.ibm.com/trial)
-
-<!-- Image placeholder: IBM Bob free trial sign-up page -->
-<img src="images/ibm-bob-trial-signup.png" alt="IBM Bob free trial sign-up page" width="1000"/>
-
-### Sign in to Bob
-
-1. Open **Bob IDE**.
-2. Click the **Bob** icon in the Activity Bar.
-3. Click **"Sign In"** and follow the authentication flow in your browser.
-4. Once signed in, Bob will be active and ready to use.
-
-<!-- Image placeholder: Bob sign-in screen in Bob IDE -->
-<img src="images/ibm-bob-vscode-signin.png" alt="Bob sign-in in VS Code or Bob IDE" width="1000"/>
-
----
-
-## 4. JDK 17 or Higher
+## 2. JDK 17 or Higher
 
 The demo application is a Java Spring Boot project and requires **JDK 17.0.0 or higher** (Oracle JDK or OpenJDK) to build and run.
 
@@ -132,7 +91,7 @@ After installation, re-run `java -version` to confirm the version is 17 or highe
 
 ---
 
-## 5. Java Environment (JAVA_HOME & PATH)
+## 3. Java Environment (JAVA_HOME & PATH)
 
 The `JAVA_HOME` environment variable tells build tools (Maven, Gradle) and other programs where your JDK is installed. It must be set correctly for the demo app to build and run.
 
@@ -162,20 +121,35 @@ echo $env:JAVA_HOME
 ```bash
 echo $JAVA_HOME
 ```
+If `JAVA_HOME` is set, the output should be likely the following and you can skip setting `JAVA_HOME` process:
+<!-- Image placeholder: Windows Environment Variables dialog -->
+<img src="images/java-home-path-1.jpg" alt="Setting JAVA_HOME on Windows" width="700"/>
 
-If the output is empty or points to the wrong JDK, follow the setup steps below.
+But if the output is empty or points to the wrong JDK, follow the setup steps below.
+
+
 
 ---
 
 ### Set JAVA_HOME — Windows
 
+You can either follow the steps here: 👉 [JAVA_HOME Set Up](https://www.codejava.net/java-core/how-to-set-java-home-environment-variable-on-windows-10) or just do the simple steps as following on this page:  
+
 1. Open **Start** → search for **"Edit the system environment variables"** → click it.
 2. Click **"Environment Variables…"**
 3. Under **System variables**, click **New…**
    - Variable name: `JAVA_HOME`
-   - Variable value: path to your JDK folder, e.g. `C:\Program Files\Eclipse Adoptium\jdk-17.0.x.x-hotspot`
+   - Variable value: path to your JDK folder, e.g. `C:\Program Files\Eclipse Adoptium\jdk-17.0.x.x-hotspot`. Click **"Browse Directory..."** to find JDK folder then click **OK** and **OK** again.
+<!-- Image placeholder: Windows Environment Variables dialog -->
+<img src="images/jdk-browse-dir.png" alt="Find JDK folder" width="700"/>
+
 4. Find the **`Path`** variable under System variables → click **Edit…**
 5. Click **New** and add: `%JAVA_HOME%\bin`
+
+<!-- Image placeholder: Windows Environment Variables dialog -->
+<img src="images/java-env-windows.png" alt="Setting JAVA_HOME on Windows" width="700"/>\
+_Credit: https://www.codejava.net/java-core/how-to-set-java-home-environment-variable-on-windows-10_
+
 6. Click **OK** on all dialogs.
 7. Open a **new** Command Prompt or PowerShell window and verify:
 
@@ -184,12 +158,9 @@ echo %JAVA_HOME%
 java -version
 javac -version
 ```
-
+The output should be likely to the following:
 <!-- Image placeholder: Windows Environment Variables dialog -->
-<img src="images/java-env-windows.png" alt="Setting JAVA_HOME on Windows" width="700"/>\
-_Credit: https://www.codejava.net/java-core/how-to-set-java-home-environment-variable-on-windows-10_
-
-Or you can follow the step here: 👉 [JAVA_HOME Set Up](https://www.codejava.net/java-core/how-to-set-java-home-environment-variable-on-windows-10)
+<img src="images/java-home-path-2.jpg" alt="Setting JAVA_HOME on Windows" width="700"/>
 
 ---
 
@@ -219,6 +190,47 @@ javac -version
 
 <!-- Image placeholder: macOS terminal showing JAVA_HOME set correctly -->
 <img src="images/java-env-macos.png" alt="Setting JAVA_HOME on macOS" width="700"/>
+
+---
+
+## 4. IBM Bob
+
+IBM Bob is an AI software engineering assistant. In this workshop, Bob is used to remediate the cryptographic vulnerabilities found by QSE — upgrading weak algorithm strings and key sizes to quantum-safe standards.
+
+> **Tip:** Install IBM Bob before the QSE extension, as Bob ships with its own built-in IDE (Bob IDE) which can be used in place of VS Code.
+
+### Installation
+
+Follow the official IBM Bob installation guide:  
+👉 [Download IBM Bob](https://bob.ibm.com/download)\
+👉 [Installation Guide](https://bob.ibm.com/docs/ide/getting-started/install)
+
+<!-- Image placeholder: IBM Bob installation page screenshot -->
+<img src="images/ibm-bob-install-page.png" alt="IBM Bob installation page" width="1000"/>
+
+---
+
+## 5. IBM Bob Account
+
+An IBM Bob account is required to activate and use Bob in this workshop.
+
+### Free trial
+
+Sign up for a **free IBM Bob account** here:  
+👉 [Start your free IBM Bob trial](https://bob.ibm.com/trial)
+
+<!-- Image placeholder: IBM Bob free trial sign-up page -->
+<img src="images/ibm-bob-trial-signup.png" alt="IBM Bob free trial sign-up page" width="1000"/>
+
+### Sign in to Bob
+
+1. Open **Bob IDE**.
+2. Click the **Bob** icon in the Activity Bar.
+3. Click **"Sign In"** and follow the authentication flow in your browser.
+4. Once signed in, Bob will be active and ready to use.
+
+<!-- Image placeholder: Bob sign-in screen in Bob IDE -->
+<img src="images/ibm-bob-vscode-signin.png" alt="Bob sign-in in VS Code or Bob IDE" width="1000"/>
 
 ---
 

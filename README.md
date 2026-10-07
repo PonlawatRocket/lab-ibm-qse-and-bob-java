@@ -102,7 +102,7 @@ Before scanning, get familiar with the app as a user would experience it.
 
 ### Start the Application
 
-Open a terminal in the project root folder and run:
+**(1)** Open a terminal in the project root folder and run command or **(2)** open **VS Code/Bob IDE** and click **File** at the left top and click **Open Folder...** and select the project root folder as workspace. Open terminal in IDE and run command:
 
 **PowerShell (Windows)**
 ```powershell
@@ -173,7 +173,7 @@ In this step you will point QSE at the app's Java source code and review the fin
 
 #### Run the scan
 
-1. Open **VS Code or Bob IDE**.
+1. Open **VS Code/Bob IDE** and open the project root folder again.
 
 2. Click the search box at the top of the window (or press Ctrl + Shift + P), then type ```>Quantum Safe Explorer: Scan``` and press Enter.
 
